@@ -1,10 +1,10 @@
 #pragma once
-// Real Subject (Definition) 
 #ifndef GRAPHIC_H
 #define GRAPHIC_H
 
 #include "IGraphic.h"
 
+// Real Subject (Definition) 
 class Graphic : public IGraphic
 {
 public:

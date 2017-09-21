@@ -116,8 +116,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Graphic.cpp" />
     <ClCompile Include="GraphicProxy.cpp" />
-    <ClCompile Include="iGraphic.cpp" />
+    <ClCompile Include="ProxyObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphic.h" />

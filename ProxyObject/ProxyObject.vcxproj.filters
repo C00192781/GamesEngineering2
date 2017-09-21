@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="iGraphic.cpp">
+    <ClCompile Include="GraphicProxy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicProxy.cpp">
+    <ClCompile Include="ProxyObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

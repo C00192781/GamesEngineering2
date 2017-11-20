@@ -33,9 +33,9 @@ int main(void*)
 	playerHealth.setHealth(100);
 	PositionComponent playerPos = PositionComponent();
 	playerPos.setPosition(SDL_Point{ 10, 20 });
-	/// ????????????????????
+	
 	ControlComponent playerControl = ControlComponent();
-//	playerControl.setPosition(SDL_Point{ 10, 20 });
+	playerControl.setKeyPressed(true);
 	
 	player.addComponent(playerHealth);
 	player.addComponent(playerPos);

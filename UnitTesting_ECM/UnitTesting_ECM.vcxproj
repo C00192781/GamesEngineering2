@@ -153,21 +153,15 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ECM\Component.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="UnitTestingECM.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ECM\ECM.vcxproj">
       <Project>{ac0668eb-0fb9-4a2f-8f7a-dca2e6f9fa30}</Project>
     </ProjectReference>
     <ProjectReference Include="..\GoogleTest\GoogleTest.vcxproj">
       <Project>{369de720-6d75-4e67-bd65-467f0355a162}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UnitTesting_ECM.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,17 +8,17 @@
 #include "ControlSystem.h"
 #include "RenderSystem.h"
 
-#include <SDL.h>
+//#include <SDL.h>
 #undef main
 
 bool isRunning;
-SDL_Window* window = nullptr;
+//SDL_Window* window = nullptr;
 
 void Initialize()
 {
 	isRunning = true; // used for while loop in main
-	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_SHOWN);
+	//SDL_Init(SDL_INIT_EVERYTHING);
+	//window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_SHOWN);
 }
 
 
@@ -27,91 +27,93 @@ int main(void*)
 	Initialize();
 
 	// PLAYER
-	Entity player = Entity();
+	Entity* player = new Entity();
 
-	HealthComponent playerHealth = HealthComponent();
-	playerHealth.setHealth(100);
-	PositionComponent playerPos = PositionComponent();
-	playerPos.setPosition(SDL_Point{ 10, 20 });
+	HealthComponent* playerHealth = new HealthComponent();
+	playerHealth->setHealth(100);
+	//PositionComponent* playerPos = new PositionComponent();
+	//playerPos->setPosition(SDL_Point{ 10, 20 });
+
+	playerHealth->setComponentID(3);
 	
-	ControlComponent playerControl = ControlComponent();
-	playerControl.setKeyPressed(true);
+	ControlComponent* playerControl = new ControlComponent();
+	playerControl->setKeyPressed(true);
 	
-	player.addComponent(playerHealth);
-	player.addComponent(playerPos);
-	player.addComponent(playerControl);
+	player->addComponent(playerHealth);
+	//player->addComponent(playerPos);
+	player->addComponent(playerControl);
 
 
 	// ALIEN
-	Entity alien = Entity();
+	Entity* alien = new Entity();
 
-	HealthComponent alienHealth = HealthComponent();
-	alienHealth.setHealth(70);
-	PositionComponent alienPos = PositionComponent();
-	alienPos.setPosition(SDL_Point{ 70, 100 });
+	HealthComponent* alienHealth = new HealthComponent();
+	alienHealth->setHealth(70);
+	//PositionComponent alienPos = PositionComponent();
+//	alienPos.setPosition(SDL_Point{ 70, 100 });
 
-	alien.addComponent(alienHealth);
-	alien.addComponent(alienPos);
+//	alien->addComponent(alienHealth);
+//	alien->addComponent(alienPos);
 
 
 	// DOG
-	Entity dog = Entity();
+	Entity* dog = new Entity();
 
-	HealthComponent dogHealth = HealthComponent();
-	dogHealth.setHealth(15);
-	PositionComponent dogPos = PositionComponent();
-	dogPos.setPosition(SDL_Point{ 300, -44 });
+	HealthComponent* dogHealth = new HealthComponent();
+	dogHealth->setHealth(15);
+	//PositionComponent* dogPos = new PositionComponent();
+	//dogPos->setPosition(SDL_Point{ 300, -44 });
 
-	dog.addComponent(dogHealth);
-	dog.addComponent(dogPos);
+	dog->addComponent(dogHealth);
+	//dog->addComponent(dogPos);
 
 
 	// CAT
-	Entity cat = Entity();
+	Entity* cat = new Entity();
 
-	HealthComponent catHealth = HealthComponent();
-	catHealth.setHealth(10);
-	PositionComponent catPos = PositionComponent();
-	catPos.setPosition(SDL_Point{ 330, -50 });
+	HealthComponent* catHealth = new HealthComponent();
+	catHealth->setHealth(10);
+	//PositionComponent* catPos = new PositionComponent();
+	//catPos->setPosition(SDL_Point{ 330, -50 });
 
-	cat.addComponent(catHealth);
-	cat.addComponent(catPos);
+	cat->addComponent(catHealth);
+	//cat->addComponent(catPos);
 
 
 
 	// SYSTEMS
-	AISystem aiSystem = AISystem();
-	aiSystem.addEntity(player);
-	aiSystem.addEntity(alien);
-	aiSystem.addEntity(dog);
-	aiSystem.addEntity(cat);
+	AISystem* aiSystem = new AISystem();
+	aiSystem->addEntity(player);
+	aiSystem->addEntity(alien);
+	aiSystem->addEntity(dog);
+	aiSystem->addEntity(cat);
 
-	RenderSystem renderSystem = RenderSystem();
-	renderSystem.addEntity(player);
-	renderSystem.addEntity(alien);
-	renderSystem.addEntity(dog);
-	renderSystem.addEntity(cat);
+	RenderSystem* renderSystem = new RenderSystem();
+	renderSystem->addEntity(player);
+	renderSystem->addEntity(alien);
+	renderSystem->addEntity(dog);
+	renderSystem->addEntity(cat);
 
-	ControlSystem controlSystem = ControlSystem();
-	controlSystem.addEntity(player);
+	ControlSystem* controlSystem = new ControlSystem();
+	controlSystem->addEntity(player);
 
 
 
 	while (true)
 	{
-		SDL_Event event;
+		/*SDL_Event event;
 		while (SDL_PollEvent(&event))
 		{
 			if (event.type == SDL_QUIT)
 			{
 				isRunning = false;
 			}
-		}
+		}*/
 
 		// system updates
-		aiSystem.update();
-		renderSystem.update();
-		controlSystem.update();
+		aiSystem->update();
+		renderSystem->update();
+		controlSystem->update();
 	}
 
 

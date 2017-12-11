@@ -15,4 +15,6 @@ public:
 	bool getKeyPressed() { return keyPressed; }
 	void setKeyPressed(bool isPressed) { keyPressed = isPressed; }
 
+	int componentID = 1; // ???
+
 };

@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AISystem.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ControlComponent.h" />
+    <ClInclude Include="ControlSystem.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="PositionComponent.h" />
+    <ClInclude Include="RenderSystem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AISystem.cpp" />
+    <ClCompile Include="ControlSystem.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{AC0668EB-0FB9-4A2F-8F7A-DCA2E6F9FA30}</ProjectGuid>
@@ -115,22 +131,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="AISystem.cpp" />
-    <ClCompile Include="ControlSystem.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ControlComponent.h" />
-    <ClInclude Include="ControlSystem.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="HealthComponent.h" />
-    <ClInclude Include="AISystem.h" />
-    <ClInclude Include="PositionComponent.h" />
-    <ClInclude Include="RenderSystem.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

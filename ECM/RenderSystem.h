@@ -5,11 +5,11 @@
 
 class RenderSystem
 {
-	std::vector<Entity> entities;
+	std::vector<Entity*> entities;
 
 public:
 	RenderSystem();
 	~RenderSystem();
-	void addEntity(Entity e);
+	void addEntity(Entity* e);
 	void update();
 };

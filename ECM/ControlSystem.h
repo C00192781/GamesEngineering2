@@ -5,11 +5,11 @@
 
 class ControlSystem
 {
-	std::vector<Entity> entities;
+	std::vector<Entity*> entities;
 
 public:
 	ControlSystem();
 	~ControlSystem();
-	void addEntity(Entity e);
+	void addEntity(Entity* e);
 	void update();
 };

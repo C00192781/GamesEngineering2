@@ -1,4 +1,4 @@
 ﻿  UnitTesting_ECM.cpp
 UnitTesting_ECM.obj : error LNK2019: unresolved external symbol "public: __thiscall AISystem::AISystem(void)" (??0AISystem@@QAE@XZ) referenced in function "private: virtual void __thiscall ECMtest_CheckVal1_Test::TestBody(void)" (?TestBody@ECMtest_CheckVal1_Test@@EAEXXZ)
 UnitTesting_ECM.obj : error LNK2019: unresolved external symbol "public: bool __thiscall AISystem::getCheck(void)" (?getCheck@AISystem@@QAE_NXZ) referenced in function "private: virtual void __thiscall ECMtest_CheckVal1_Test::TestBody(void)" (?TestBody@ECMtest_CheckVal1_Test@@EAEXXZ)
-D:\UnitTestingAttempt2\GamesEngineering2\ECM\Debug\UnitTesting_ECM.exe : fatal error LNK1120: 2 unresolved externals
+C:\Users\gameuser\Desktop\unittestingupload\GamesEngineering2\ECM\Debug\UnitTesting_ECM.exe : fatal error LNK1120: 2 unresolved externals

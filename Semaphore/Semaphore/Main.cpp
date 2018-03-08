@@ -52,10 +52,10 @@ void Producer()
 		{
 			cout << "ID:" << this_thread::get_id() << endl;
 
-			while (!p == c)
-			{
-				// waiting/spinning
-			}
+			//while (!p == c)
+			//{
+			//	// waiting/spinning
+			//}
 
 			//produce data 
 			int data = rand() % 101;
@@ -103,10 +103,10 @@ void Consumer()
 		{
 			cout << " " << "ID:" << this_thread::get_id() << endl;
 
-			while (p <= c)
-			{
-				// waiting/spinning
-			}
+			//while (p <= c)
+			//{
+			//	// waiting/spinning
+			//}
 
 			// will hold the data received
 			int result;

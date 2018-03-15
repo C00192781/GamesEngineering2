@@ -2,138 +2,193 @@
 #include <thread>
 #include <chrono>
 #include <mutex>
+#include <condition_variable>
 
 using namespace std;
 
 int p = 0, c = 0;
-const int n = 5; 
-
-int buf[n];
-
-// variables for front and back of the queue
-int front = 0;
-int rear = 0;
-
-int emptySem = 5;
-int full = 0;
-
-int mutexD = 1;
-int mutexF = 1;
 
 
-void V(int &sem)
+//int rw = 1;
+//int nr = 0;
+
+//int count;
+
+
+//void V(int &sem)
+//{
+//	sem += 1;
+//}
+//
+//void P(int &sem)
+//{
+//
+//
+//
+//	while (sem <= 0)
+//	{
+//
+//	}
+//	sem -= 1;
+//}
+
+
+class Semaphore
 {
-	sem += 1;
-}
+public:
+	int semCount;
+	std::mutex mx;
+	std::condition_variable cv;
 
-void P(int &sem)
-{
-	while (sem <= 0)
+
+	Semaphore()
 	{
+		semCount = 1;
+	}
+
+
+	void P()
+	{
+		std::unique_lock<std::mutex> lk(mx);
+		
+		while (semCount <= 0)
+		{
+			cv.wait(lk);
+		}
+		semCount--;
 
 	}
-	sem -= 1;
-}
+
+	void V()
+	{
+		std::unique_lock<std::mutex> lk(mx);
+		semCount++;
+		lk.unlock();
+		cv.notify_one();
+	}
+
+};
+
+//wont't work
+//just put everything in the class
+
+//void P(Semaphore * sem)
+//{
+//	std::unique_lock<std::mutex> lk(sem->mx);
+//
+//	while (sem->semCount)
+//	{
+//		sem->cv.wait(lk);
+//	}
+//	sem->semCount--;
+//
+//}
+//
+//void V(Semaphore * sem)
+//{
+//	std::unique_lock<std::mutex> lk(sem->mx);
+//
+//
+//	sem->semCount++;
+//	lk.unlock();
+//	sem->cv.notify_one();
+//}
 
 
 
-// Producers are said to be busy waiting
-void Producer()
+
+
+Semaphore rw;
+Semaphore mutexR;
+int nr = 0;
+
+const int n = 5;
+int buf[n];
+
+int bufferStep;
+
+
+
+void Reader()
 {
 	bool run = true;
 	while (run == true)
 	{
-		//while (p < n)
-		//{
-			cout << "ID:" << this_thread::get_id() << endl;
+		//P(&mutexR);
+		mutexR.P();
+		
+		nr = nr + 1;
 
-			while (!p == c)
-			{
-				// waiting/spinning
-			}
 
-			//produce data 
-			int data = rand() % 101;
+		if (nr == 1)
+		{
+			rw.P();
+		}
 
-			// await empty > 0
-			P(emptySem);
+		//if first, get lock
+		//V(&mutexR);
+		mutexR.V();
+	
 
-			// wait until no other producer is in the process of making changes
-			P(mutexD);
 
-			buf[rear] = data;
+		// read database
+		std::cout << "Data in database" << std::endl;
+		for (int i = 0; i < n; i++)
+		{
+			std::cout << i << ": " << buf[i] << std::endl;
+		}
 
-			// increment rear
-			rear = (rear + 1) % n;
+		// 	P(&mutexR);
+		mutexR.P();
+	
 
-			// signal that the producer isn't altering buffer data anymore
-			V(mutexD);
+		nr = nr - 1;
+		if (nr == 0)
+		{
+			// V(&rw);
+			rw.V();
+		}
 
-			// signal that the data has been added
-			V(full);
+		// if last, release lock
+		// V(&mutexR);
+		mutexR.V();
+		
 
-			std::cout << "Data deposited in buffer: " << data << std::endl;
-
-			this_thread::sleep_for(chrono::milliseconds(2000));
-
-			p += 1;
-		//}
-
-		//cout << "Production Finished" << endl;
-		//run = false;
-	}	
+		this_thread::sleep_for(chrono::milliseconds(2000));
+	}
 }
 
 
-void Consumer()
+
+void Writer()
 {
 	bool run = true;
 	while (run == true)
 	{
-		//while (c < n)
-		//{
-			cout << " " << "ID:" << this_thread::get_id() << endl;
+		//P(&rw);
+		rw.P();
+		// write the database
 
-			while (p <= c)
-			{
-				// waiting/spinning
-			}
+		buf[bufferStep] = rand() % 101;
+		std::cout << "Value written to database: " << buf[bufferStep] << std::endl;
+		bufferStep = (bufferStep + 1) % n;
+		
+		//V(&rw);
+		rw.V();
+		
 
-			// will hold the data received
-			int result;
-
-			// await full > 0
-			P(full);
-
-			// wait until no other consumer is in the process of making changes
-			P(mutexF);
-
-			// fetch message
-			result = buf[front];
-
-			front = (front + 1) % n;
-
-			// signal that the consumer isn't receiving buffer data anymore
-			V(mutexF);
-
-			// signal that the data has read
-			V(emptySem);
-
-			this_thread::sleep_for(chrono::milliseconds(1000));
-
-			c += 1;
-	/*	}
-		cout << "Consumption Finished" << endl;
-		run = false;*/
+		this_thread::sleep_for(chrono::milliseconds(1000));
 	}
 }
 
 
 int main()
 {
-	thread producer(Producer);
-	thread consumer(Consumer);
-	producer.join();
-	consumer.join();
+	thread reader(Reader);
+	thread writer(Writer);
+
+	reader.join();
+	writer.join();
 	cin.get();
 }
+

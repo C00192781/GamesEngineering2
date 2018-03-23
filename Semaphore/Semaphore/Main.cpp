@@ -117,11 +117,11 @@ void Reader()
 
 
 		// read database
-		std::cout << "Data in database" << std::endl;
-		for (int i = 0; i < n; i++)
-		{
-			std::cout << i << ": " << buf[i] << std::endl;
-		}
+		std::cout << "Reading Data" << std::endl;
+		//for (int i = 0; i < n; i++)
+		//{
+		//	std::cout << i << ": " << buf[i] << std::endl;
+		//}
 
 		// 	P(&mutexR);
 		mutexR.P();

@@ -4,6 +4,10 @@
 #include <mutex>
 #include <condition_variable>
 
+#include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+
 using namespace std;
 
 int p = 0, c = 0;
@@ -69,33 +73,6 @@ public:
 
 };
 
-//wont't work
-//just put everything in the class
-
-//void P(Semaphore * sem)
-//{
-//	std::unique_lock<std::mutex> lk(sem->mx);
-//
-//	while (sem->semCount)
-//	{
-//		sem->cv.wait(lk);
-//	}
-//	sem->semCount--;
-//
-//}
-//
-//void V(Semaphore * sem)
-//{
-//	std::unique_lock<std::mutex> lk(sem->mx);
-//
-//
-//	sem->semCount++;
-//	lk.unlock();
-//	sem->cv.notify_one();
-//}
-
-
-
 
 
 Semaphore rw;
@@ -107,7 +84,15 @@ int buf[n];
 
 int bufferStep;
 
+int getRandomValue()
+{
+	srand(time(NULL));
+	int random;
 
+	random = rand() % 101;
+
+	return random;
+}
 
 void Reader()
 {
@@ -163,13 +148,17 @@ void Reader()
 void Writer()
 {
 	bool run = true;
+	
 	while (run == true)
 	{
+
 		//P(&rw);
 		rw.P();
 		// write the database
 
-		buf[bufferStep] = rand() % 101;
+		this_thread::sleep_for(chrono::milliseconds(1000));
+
+		buf[bufferStep] = getRandomValue();
 		std::cout << "Value written to database: " << buf[bufferStep] << std::endl;
 		bufferStep = (bufferStep + 1) % n;
 		
@@ -186,9 +175,17 @@ int main()
 {
 	thread reader(Reader);
 	thread writer(Writer);
+	thread reader2(Reader);
+	thread writer2(Writer);
+	thread reader3(Reader);
+	thread writer3(Writer);
 
 	reader.join();
 	writer.join();
+	reader2.join();
+	writer2.join();
+	reader3.join();
+	writer3.join();
 	cin.get();
 }
 

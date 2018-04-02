@@ -1,3 +1,0 @@
-﻿  Main.cpp
-c:\users\gameuser\desktop\2018\gamesengineering\r&w\gamesengineering2\semaphore\semaphore\main.cpp(89): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Semaphore.vcxproj -> C:\Users\gameuser\Desktop\2018\GamesEngineering\R&W\GamesEngineering2\Semaphore\Debug\Semaphore.exe

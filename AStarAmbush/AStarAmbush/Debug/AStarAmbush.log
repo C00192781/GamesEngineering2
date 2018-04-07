@@ -1,47 +1,47 @@
 ﻿  main.cpp
-d:\astarambush\astarambush\astarambush\graph.h(562): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  d:\astarambush\astarambush\astarambush\graph.h(556): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(562): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(556): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-  d:\astarambush\astarambush\astarambush\main.cpp(74): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\main.cpp(74): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-  d:\astarambush\astarambush\astarambush\main.cpp(28): note: see reference to class template instantiation 'Graph<std::pair<std::string,int>,int>' being compiled
-d:\astarambush\astarambush\astarambush\graph.h(535): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  d:\astarambush\astarambush\astarambush\graph.h(525): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)'
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\main.cpp(28): note: see reference to class template instantiation 'Graph<std::pair<std::string,int>,int>' being compiled
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(535): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(525): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)'
           with
           [
               _Ty=GraphNode<std::pair<std::string,int>,int> *,
               NodeType=std::pair<std::string,int>,
               ArcType=int
           ]
-  d:\astarambush\astarambush\astarambush\graph.h(570): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)' being compiled
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(570): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)' being compiled
           with
           [
               _Ty=GraphNode<std::pair<std::string,int>,int> *,
               NodeType=std::pair<std::string,int>,
               ArcType=int
           ]
-  d:\astarambush\astarambush\astarambush\graph.h(110): note: while compiling class template member function 'Graph<std::pair<std::string,int>,int>::Graph(int)'
-  d:\astarambush\astarambush\astarambush\main.cpp(28): note: see reference to function template instantiation 'Graph<std::pair<std::string,int>,int>::Graph(int)' being compiled
-d:\astarambush\astarambush\astarambush\graph.h(666): warning C4018: '<': signed/unsigned mismatch
-  d:\astarambush\astarambush\astarambush\graph.h(649): note: while compiling class template member function 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)'
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(110): note: while compiling class template member function 'Graph<std::pair<std::string,int>,int>::Graph(int)'
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\main.cpp(28): note: see reference to function template instantiation 'Graph<std::pair<std::string,int>,int>::Graph(int)' being compiled
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(666): warning C4018: '<': signed/unsigned mismatch
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(649): note: while compiling class template member function 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)'
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-  d:\astarambush\astarambush\astarambush\graph.h(588): note: see reference to function template instantiation 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)' being compiled
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(588): note: see reference to function template instantiation 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)' being compiled
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-d:\astarambush\astarambush\astarambush\graph.h(668): warning C4018: '<': signed/unsigned mismatch
-d:\astarambush\astarambush\astarambush\graph.h(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  d:\astarambush\astarambush\astarambush\graph.h(35): note: while compiling class template member function 'bool NodeSearchCostComparer2<NodeType,ArcType>::operator ()(GraphNode<NodeType,ArcType> *,GraphNode<NodeType,ArcType> *)'
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(668): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(36): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(35): note: while compiling class template member function 'bool NodeSearchCostComparer2<NodeType,ArcType>::operator ()(GraphNode<NodeType,ArcType> *,GraphNode<NodeType,ArcType> *)'
           with
           [
               NodeType=std::pair<std::string,int>,
@@ -59,23 +59,24 @@ d:\astarambush\astarambush\astarambush\graph.h(36): warning C4244: 'initializing
               NodeType=std::pair<std::string,int>,
               ArcType=int
           ]
-  d:\astarambush\astarambush\astarambush\graph.h(568): note: see reference to class template instantiation 'std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>>' being compiled
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(568): note: see reference to class template instantiation 'std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>>' being compiled
           with
           [
               _Ty=GraphNode<std::pair<std::string,int>,int> *,
               NodeType=std::pair<std::string,int>,
               ArcType=int
           ]
-  d:\astarambush\astarambush\astarambush\graph.h(556): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(556): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-  d:\astarambush\astarambush\astarambush\main.cpp(74): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
+  d:\astarambushproject\gamesengineering2\astarambush\astarambush\main.cpp(74): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<Agent<std::pair<std::string,int>,int> *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
           with
           [
               _Ty=Agent<std::pair<std::string,int>,int> *
           ]
-d:\astarambush\astarambush\astarambush\graph.h(37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  AStarAmbush.vcxproj -> D:\AStarAmbush\AStarAmbush\Debug\AStarAmbush.exe
-  AStarAmbush.vcxproj -> D:\AStarAmbush\AStarAmbush\Debug\AStarAmbush.pdb (Partial PDB)
+d:\astarambushproject\gamesengineering2\astarambush\astarambush\graph.h(37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  LINK : D:\AStarAmbushProject\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.exe not found or not built by the last incremental link; performing full link
+  AStarAmbush.vcxproj -> D:\AStarAmbushProject\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.exe
+  AStarAmbush.vcxproj -> D:\AStarAmbushProject\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.pdb (Partial PDB)

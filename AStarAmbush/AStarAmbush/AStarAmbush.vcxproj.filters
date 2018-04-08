@@ -18,6 +18,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h">
@@ -32,5 +35,25 @@
     <ClInclude Include="GraphNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="arcs.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="drawEdges.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="drawNodes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="nodes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

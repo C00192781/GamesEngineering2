@@ -12,6 +12,8 @@
 //#include "SFML\Graphics.hpp"
 
 #include "Agent.h"
+#include "EventListener.h"
+#include "InputHandler.h"
 
 
 using namespace std;
@@ -32,6 +34,10 @@ int main(int argc, char *argv[]) {
 	SDL_Window* gameWindow = SDL_CreateWindow("TEST", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 816, 624, SDL_WINDOW_SHOWN);
 	SDL_Renderer* gameRenderer = SDL_CreateRenderer(gameWindow, -1, SDL_RENDERER_PRESENTVSYNC);
 	SDL_Event *e = new SDL_Event();
+
+	EventListener *listener = new EventListener();
+
+	InputHandler *input = new InputHandler(listener, e);
 	
 	Graph< pair<string, int>, int > graph(16);
 	std::string nodeLabel;
@@ -76,7 +82,6 @@ int main(int argc, char *argv[]) {
 
 	while (true)
 	{
-
 		cout << "Provide starting point" << endl;
 		cin >> start;
 		cout << "Provide goal" << endl;
@@ -140,6 +145,7 @@ int main(int argc, char *argv[]) {
 				std::cout << "complete" << std::endl;
 			}
 		}
+		//input->HandleInput();
 	}
 	SDL_RenderPresent(gameRenderer);
 

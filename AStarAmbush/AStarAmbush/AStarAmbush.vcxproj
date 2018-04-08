@@ -150,13 +150,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="EventListener.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphArc.h" />
     <ClInclude Include="GraphNode.h" />
+    <ClInclude Include="InputHandler.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="arcs.txt" />
+    <Text Include="drawEdges.txt" />
+    <Text Include="drawNodes.txt" />
+    <Text Include="nodes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

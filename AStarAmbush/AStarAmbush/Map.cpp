@@ -12,10 +12,16 @@ Map::~Map()
 
 void Map::Draw(SDL_Renderer * renderer)
 {
+	/*std::cout << nodeObjects.size() << std::endl;*/
+	for (int i = 0; i < nodeObjects.size(); i++)
+	{
+		nodeObjects.at(i)->Draw(renderer);
+	}
 	for (int i = 0; i < map.size(); i++)
 	{
 		map.at(i)->Draw(renderer);
 	}
+	
 }
 
 void Map::InitializeMap()
@@ -47,6 +53,33 @@ void Map::SetUpObstacles()
 	map.push_back(obstacle1);
 	map.push_back(obstacle2);
 	map.push_back(obstacle3);
+}
+
+void Map::SetNodeRepresentation(int rowWidth, int columnHeight)
+{
+	for (int i = 0; i < rowWidth; i++)
+	{
+		for (int y = 0; y < columnHeight; y++)
+		{
+			SDL_Colour green = SDL_Colour{ 25, 179, 0, 0 };
+			NodeObject *nodeObject = new NodeObject(i * 30, y * 30, 5, 5, green);
+			nodeObjects.push_back(nodeObject);
+		}
+	}
+}
+
+void Map::SetNodes(int rowWidth, int columnHeight, Graph< pair<string, int>, int > *graph)
+{
+	int count = 0;
+	for (int i = 0; i < rowWidth; i++)
+	{
+		for (int y = 0; y < columnHeight; y++)
+		{
+			SDL_Point position = SDL_Point{ i * 30, y * 30 };
+			graph->addNode(pair<string, int>(std::to_string(count), 0), count, position);
+			count++;
+		}
+	}
 }
 
 

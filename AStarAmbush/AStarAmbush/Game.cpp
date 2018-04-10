@@ -8,7 +8,7 @@ void Game::Initialize()
 {
 	isRunning = true; // used for while loop in main
 	SDL_Init(SDL_INIT_EVERYTHING);
-	window = SDL_CreateWindow("", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow("A*mbush Project", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, window_width, window_height, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	e = new SDL_Event();
 
@@ -21,24 +21,30 @@ void Game::Initialize()
 	start = 3;
 	goal = 9;
 
-	map = new Map();
-	map->InitializeMap();
 	
-	graph = new Graph< pair<string, int>, int >(16);
+	
+	graph = new Graph< pair<string, int>, int >(864);
 	GraphSetUp();
 	InitializeAgents(numOfAgents);
 
-	RunAStarAmbush(start, goal, 0);
-	pCurrent = graph->nodeArray()[goal];
-	graph->displayPath(pCurrent, start);
+	map = new Map();
+	map->InitializeMap();
+	map->SetNodeRepresentation(36, 24);
+	map->SetNodes(36, 24, graph);
 
-	RunAStarAmbush(start, goal, 1);
-	pCurrent = graph->nodeArray()[goal];
-	graph->displayPath(pCurrent, start);
+	std::cout << "Search is temporarily commented out until new arcs are added in." << std::endl;
 
-	RunAStarAmbush(start, goal, 2);
-	pCurrent = graph->nodeArray()[goal];
-	graph->displayPath(pCurrent, start);
+	//RunAStarAmbush(start, goal, 0);
+	//pCurrent = graph->nodeArray()[goal];
+	//graph->displayPath(pCurrent, start);
+
+	//RunAStarAmbush(start, goal, 1);
+	//pCurrent = graph->nodeArray()[goal];
+	//graph->displayPath(pCurrent, start);
+
+	//RunAStarAmbush(start, goal, 2);
+	//pCurrent = graph->nodeArray()[goal];
+	//graph->displayPath(pCurrent, start);
 
 	
 
@@ -46,27 +52,27 @@ void Game::Initialize()
 
 void Game::GraphSetUp()
 {
-//	Graph< pair<string, int>, int > graph(16);
-	std::string nodeLabel;
-	int i = 0;
-	ifstream myfile;
-	myfile.open("nodes.txt");
-	while (myfile >> nodeLabel) 
-	{
-		// giving each node a string and an integer we'll change later
-
-		graph->addNode(pair<string, int>(nodeLabel, 0), i);
-		i++;
-	}
-	myfile.close();
-
-	myfile.open("arcs.txt");
-	int from, to, weight;
-	while (myfile >> from >> to >> weight) 
-	{
-		graph->addArc(from, to, weight);
-	}
-	myfile.close();
+////	Graph< pair<string, int>, int > graph(16);
+//	std::string nodeLabel;
+//	int i = 0;
+//	ifstream myfile;
+//	myfile.open("nodes.txt");
+//	while (myfile >> nodeLabel) 
+//	{
+//		// giving each node a string and an integer we'll change later
+//
+//		graph->addNode(pair<string, int>(nodeLabel, 0), i);
+//		i++;
+//	}
+//	myfile.close();
+//
+//	myfile.open("arcs.txt");
+//	int from, to, weight;
+//	while (myfile >> from >> to >> weight) 
+//	{
+//		graph->addArc(from, to, weight);
+//	}
+//	myfile.close();
 }
 
 void Game::InitializeAgents(int num)

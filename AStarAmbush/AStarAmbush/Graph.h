@@ -81,7 +81,7 @@ public:
     }
 
     // Public member functions.
-    bool addNode( NodeType data, int index );
+    bool addNode( NodeType data, int index, SDL_Point waypoint );
     void removeNode( int index );
     bool addArc( int from, int to, ArcType weight );
     void removeArc( int from, int to );
@@ -142,7 +142,7 @@ Graph<NodeType, ArcType>::~Graph() {
 //  Return Value:   true if successful
 // ----------------------------------------------------------------
 template<class NodeType, class ArcType>
-bool Graph<NodeType, ArcType>::addNode( NodeType data, int index ) {
+bool Graph<NodeType, ArcType>::addNode( NodeType data, int index, SDL_Point waypoint) {
    bool nodeNotPresent = false;
    // find out if a node does not exist at that index.
    if (m_pNodes[index] == 0) {
@@ -151,6 +151,7 @@ bool Graph<NodeType, ArcType>::addNode( NodeType data, int index ) {
 	  m_pNodes[index] = new Node;
 	  m_pNodes[index]->setData(data);
 	  m_pNodes[index]->setMarked(false);
+	  m_pNodes[index]->setWaypoint(waypoint);
 
 	  
 

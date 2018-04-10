@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="NodeObject.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
+    <ClInclude Include="NodeObject.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="EventListener.h" />
     <ClInclude Include="Game.h" />

@@ -1,7 +1,8 @@
 ﻿  Map.cpp
-d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(15): warning C4018: '<': signed/unsigned mismatch
-d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(16): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(20): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\10 04 2018 3\gamesengineering2\astarambush\astarambush\map.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   AStarAmbush.vcxproj -> D:\AStarAmbushProject\10 04 2018 3\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.exe
   AStarAmbush.vcxproj -> D:\AStarAmbushProject\10 04 2018 3\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.pdb (Partial PDB)

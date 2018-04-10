@@ -2,6 +2,7 @@
 #define GRAPHNODE_H
 
 #include <list>
+#include "SDL.h"
 
 // Forward references
 template <typename NodeType, typename ArcType> class GraphArc;
@@ -40,6 +41,8 @@ private:
 
 
 	float estimateDistance;
+
+	SDL_Point m_waypoint;
 
 
 public:
@@ -98,6 +101,16 @@ public:
 	void setPrevious(GraphNode *prev)
 	{
 		m_previous = prev;
+	}
+
+	SDL_Point getWaypoint()
+	{
+		return m_waypoint;
+	}
+
+	void setWaypoint(SDL_Point waypoint)
+	{
+		m_waypoint = waypoint;
 	}
 
 

@@ -96,6 +96,7 @@ public:
 	void aStarAmbushInitialize(Node * pStart, std::priority_queue < Node *, vector<Node *>, NodeSearchCostComparer2<NodeType, ArcType>> *nodeQueue);
 	void aStarAmbush (Node * pStart, Node* pDest, std::vector<Agent *>& agents, Agent * agent);
 	int calculateDegree(Node* currentNode, std::vector<Agent *> agents, Agent * currentAgent);
+	void displayPath(Node * pCurrent, int start);
 
 	/*void UCS*/
 };
@@ -683,6 +684,29 @@ inline int Graph<NodeType, ArcType>::calculateDegree(Node* currentNode, std::vec
 	return counter;
 	//return 0;
 	
+}
+
+template<class NodeType, class ArcType>
+inline void Graph<NodeType, ArcType>::displayPath(Node * pCurrent, int start)
+{
+	// used to output path + path values
+	while (pCurrent != nodeArray()[start])
+	{
+		std::cout << "Node: " << pCurrent->data().first << std::endl;
+		std::cout << "Distance: " << pCurrent->data().second << std::endl;
+
+		std::cout << "Estimate: " << pCurrent->getEstimate() << std::endl;
+		pCurrent = pCurrent->getPrevious();
+	}
+
+	/*for (int index = 0; index < agent.starPath.size(); index++)
+	{
+		if (agent.starPath.at(index) == graph.nodeArray()[goal])
+		{
+			std::cout << "start" << std::endl;
+		}
+		std::cout << agent.starPath.at(index)->data().first << " " << agent.starPath.at(index)->data().second << std::endl;
+	}*/
 }
 
 

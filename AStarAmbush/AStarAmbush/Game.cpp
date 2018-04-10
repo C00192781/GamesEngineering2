@@ -4,9 +4,6 @@
 using namespace std;
 using std::pair;
 
-#define screenWidth 1080
-#define screenHeight 720
-
 void Game::Initialize()
 {
 	isRunning = true; // used for while loop in main
@@ -25,6 +22,7 @@ void Game::Initialize()
 	goal = 9;
 
 	map = new Map();
+	map->InitializeMap();
 	
 	graph = new Graph< pair<string, int>, int >(16);
 	GraphSetUp();
@@ -41,6 +39,8 @@ void Game::Initialize()
 	RunAStarAmbush(start, goal, 2);
 	pCurrent = graph->nodeArray()[goal];
 	graph->displayPath(pCurrent, start);
+
+	
 
 }
 
@@ -95,6 +95,7 @@ void Game::Update()
 {
 	FramerateHandler();
 	input->HandleInput();
+	SDL_RenderPresent(renderer);
 }
 
 void Game::FramerateHandler()
@@ -108,7 +109,12 @@ void Game::FramerateHandler()
 
 void Game::Render()
 {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_RenderClear(renderer);
 
+	map->Draw(renderer);
+
+	//obstacle->Draw(renderer);
 }
 
 

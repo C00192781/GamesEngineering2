@@ -15,11 +15,11 @@
 #include "EventListener.h"
 #include "InputHandler.h"
 #include "Map.h"
-
+#include "Obstacle.h"
 
 #define fps 60
-#define window_width 1000
-#define window_height 800
+#define window_width 1080
+#define window_height 720
 
 typedef GraphArc<std::string, int> Arc;
 typedef GraphNode<pair<std::string, int>, int> Node;

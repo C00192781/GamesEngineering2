@@ -12,9 +12,9 @@ public:
 	Map();
 	~Map();
 
-	void Draw();
+	void Draw(SDL_Renderer * renderer);
 
-	std::vector<Obstacle> map;
+	std::vector<Obstacle*> map;
 	void InitializeMap();
 	void SetUpOuterWalls();
 	void SetUpObstacles();

@@ -21,6 +21,7 @@ void Map::Draw(SDL_Renderer * renderer)
 void Map::InitializeMap()
 {
 	SetUpOuterWalls();
+	SetUpObstacles();
 }
 
 void Map::SetUpOuterWalls()
@@ -39,6 +40,13 @@ void Map::SetUpOuterWalls()
 
 void Map::SetUpObstacles()
 {
+	SDL_Colour red = SDL_Colour{ 220, 0, 0, 0 };
+	Obstacle *obstacle1 = new Obstacle(200, 0, StandardWidthAndHeight, window_height/1.5, red);
+	Obstacle *obstacle2 = new Obstacle(500, 150, StandardWidthAndHeight, window_height/1.5, red);
+	Obstacle *obstacle3 = new Obstacle(800, 100, StandardWidthAndHeight, window_height/1.5, red);
+	map.push_back(obstacle1);
+	map.push_back(obstacle2);
+	map.push_back(obstacle3);
 }
 
 

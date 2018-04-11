@@ -1,8 +1,8 @@
 #include "Map.h"
 
-Map::Map()
+Map::Map(EventListener *eventListener)
 {
-
+	m_eventListener = eventListener;
 }
 
 Map::~Map()
@@ -13,33 +13,36 @@ Map::~Map()
 void Map::Draw(SDL_Renderer * renderer)
 {
 	/*std::cout << nodeObjects.size() << std::endl;*/
-	/*for (int i = 0; i < nodeObjects.size(); i++)
+	for (int i = 0; i < nodeObjects.size(); i++)
 	{
 		nodeObjects.at(i)->Draw(renderer);
 	}
 	for (int i = 0; i < map.size(); i++)
 	{
 		map.at(i)->Draw(renderer);
-	}*/
-	for (int i = 0; i < map.size(); i++)
+	}
+	player->Draw(renderer);
+	/*for (int i = 0; i < map.size(); i++)
 	{
 		map.at(i)->Draw(renderer);
 	}
 	for (int i = 0; i < nodeObjects.size(); i++)
 	{
 		nodeObjects.at(i)->Draw(renderer);
-	}
+	}*/
 	
 	
 }
 
 void Map::InitializeMap()
 {
-	SetUpOuterWalls();
-	SetUpObstacles();
+	SDL_Colour white = SDL_Colour{ 255, 255, 255, 0 };
+	player = new Player(300, 400, 50, 50, white);
+	SpawnOuterWalls();
+	SpawnObstacles();
 }
 
-void Map::SetUpOuterWalls()
+void Map::SpawnOuterWalls()
 {
 	SDL_Colour red = SDL_Colour{ 220, 0, 0, 0 };
 	Obstacle *leftWall = new Obstacle(0, 0, StandardWidthAndHeight, window_height, red);
@@ -53,7 +56,7 @@ void Map::SetUpOuterWalls()
 	map.push_back(downWall);
 }
 
-void Map::SetUpObstacles()
+void Map::SpawnObstacles()
 {
 	SDL_Colour red = SDL_Colour{ 220, 0, 0, 0 };
 	Obstacle *obstacle1 = new Obstacle(200, 0, StandardWidthAndHeight, window_height/1.5, red);
@@ -141,6 +144,37 @@ void Map::SetArcs(int rowWidth, int columnHeight, Graph<pair<string, int>, int>*
 		//std::cout << "Index: " << graph->nodeArray()[i]->data().first << std::endl;
 
 		//std::cout << "Size: " << graph->nodeArray()[i]->arcList().size() << std::endl;
+	}
+}
+
+void Map::SpawnEnemies(int num, SDL_Point start, int width, int height, SDL_Colour colour)
+{
+	for (int i = 0; i < num; i++)
+	{
+		Enemy *enemy = new Enemy(start.x, start.y, width, height, colour, i);
+		enemies.push_back(enemy);
+	}
+	
+}
+
+void Map::Update()
+{
+	int speed = 5;
+	if (m_eventListener->W == true)
+	{
+		player->Move(0, -speed);
+	}
+	if (m_eventListener->A == true)
+	{
+		player->Move(-speed, 0);
+	}
+	if (m_eventListener->S == true)
+	{
+		player->Move(0, speed);
+	}
+	if (m_eventListener->D == true)
+	{
+		player->Move(speed, 0);
 	}
 }
 

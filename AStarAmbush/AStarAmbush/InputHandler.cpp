@@ -18,7 +18,6 @@ void InputHandler::HandleInput()
 				switch (m_event->button.button)
 				{
 				case SDL_BUTTON_LEFT:
-					std::cout << "dfsdf" << std::endl;
 					m_eventListener->LeftClick = true;
 					break;
 				case SDL_BUTTON_RIGHT:

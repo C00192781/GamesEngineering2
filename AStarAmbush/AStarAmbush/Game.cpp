@@ -27,13 +27,15 @@ void Game::Initialize()
 	GraphSetUp();
 	InitializeAgents(numOfAgents);
 
-	map = new Map();
+	map = new Map(listener);
 	map->InitializeMap();
 	map->SetNodeRepresentation(36, 24);
 	map->SetNodes(36, 24, graph);
 	map->SetArcs(36, 24, graph);
 
 	//std::cout << "Search is temporarily commented out until new arcs are added in." << std::endl;
+
+	
 
 	RunAStarAmbush(start, goal, 0);
 	pCurrent = graph->nodeArray()[goal];
@@ -102,6 +104,7 @@ void Game::Update()
 {
 	FramerateHandler();
 	input->HandleInput();
+	map->Update();
 	SDL_RenderPresent(renderer);
 }
 

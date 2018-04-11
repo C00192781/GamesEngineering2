@@ -98,6 +98,9 @@ public:
 	int calculateDegree(Node* currentNode, std::vector<Agent *> agents, Agent * currentAgent);
 	void displayPath(Node * pCurrent, int start);
 
+	int getSize();
+
+	int m_size = 0;
 	/*void UCS*/
 };
 
@@ -109,6 +112,7 @@ public:
 // ----------------------------------------------------------------
 template<class NodeType, class ArcType>
 Graph<NodeType, ArcType>::Graph(int size) : m_maxNodes(size) {
+	m_size = size;
 	int i;
 	m_pNodes = new Node *[m_maxNodes];
 	// go through every index and clear it to null (0)
@@ -708,6 +712,12 @@ inline void Graph<NodeType, ArcType>::displayPath(Node * pCurrent, int start)
 		}
 		std::cout << agent.starPath.at(index)->data().first << " " << agent.starPath.at(index)->data().second << std::endl;
 	}*/
+}
+
+template<class NodeType, class ArcType>
+inline int Graph<NodeType, ArcType>::getSize()
+{
+	return m_size;
 }
 
 

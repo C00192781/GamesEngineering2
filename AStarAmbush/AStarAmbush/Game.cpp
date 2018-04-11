@@ -18,8 +18,8 @@ void Game::Initialize()
 	//Graph< pair<string, int>, int > graph(16);
 
 	numOfAgents = 3;
-	start = 3;
-	goal = 9;
+	start = 0;
+	goal = 863;
 
 	
 	
@@ -31,12 +31,13 @@ void Game::Initialize()
 	map->InitializeMap();
 	map->SetNodeRepresentation(36, 24);
 	map->SetNodes(36, 24, graph);
+	map->SetArcs(36, 24, graph);
 
-	std::cout << "Search is temporarily commented out until new arcs are added in." << std::endl;
+	//std::cout << "Search is temporarily commented out until new arcs are added in." << std::endl;
 
-	//RunAStarAmbush(start, goal, 0);
-	//pCurrent = graph->nodeArray()[goal];
-	//graph->displayPath(pCurrent, start);
+	RunAStarAmbush(start, goal, 0);
+	pCurrent = graph->nodeArray()[goal];
+	graph->displayPath(pCurrent, start);
 
 	//RunAStarAmbush(start, goal, 1);
 	//pCurrent = graph->nodeArray()[goal];

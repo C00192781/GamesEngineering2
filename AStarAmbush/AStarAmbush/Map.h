@@ -25,6 +25,7 @@ public:
 	void SetUpObstacles();
 	void SetNodeRepresentation(int rowWidth, int columnHeight);
 	void SetNodes(int rowWidth, int columnHeight, Graph<pair<string, int>, int> *graph);
+	void SetArcs(int rowWidth, int columnHeight, Graph<pair<string, int>, int> *graph);
 
 private:
 };

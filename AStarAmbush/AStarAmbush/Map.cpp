@@ -69,6 +69,7 @@ void Map::SpawnOuterWalls()
 	map.push_back(downWall);
 }
 
+// Spawns red Inner Obstacles
 void Map::SpawnObstacles()
 {
 	SDL_Colour red = SDL_Colour{ 220, 0, 0, 0 };
@@ -80,6 +81,7 @@ void Map::SpawnObstacles()
 	map.push_back(obstacle3);
 }
 
+//Sets the position of the visual representation of the node objects
 void Map::SetNodeRepresentation(int rowWidth, int columnHeight)
 {
 	for (int i = 0; i < rowWidth; i++)
@@ -93,6 +95,7 @@ void Map::SetNodeRepresentation(int rowWidth, int columnHeight)
 	}
 }
 
+// Adds nodes to graph
 void Map::SetNodes(int rowWidth, int columnHeight)
 {
 	int count = 0;
@@ -108,6 +111,7 @@ void Map::SetNodes(int rowWidth, int columnHeight)
 	}
 }
 
+// Goes through nodes and sets their outgoing arcs
 void Map::SetArcs(int rowWidth, int columnHeight)
 {
 	int standardWeight = 10;
@@ -149,6 +153,8 @@ void Map::SetArcs(int rowWidth, int columnHeight)
 	}
 }
 
+// Spawn enemies into level
+// Enemies use A*mbush (not here) to search
 void Map::SpawnEnemies(int num, SDL_Point start, int width, int height, SDL_Colour colour)
 {
 	for (int i = 0; i < num; i++)
@@ -169,16 +175,39 @@ void Map::SetWaypoints(std::vector<SDL_Point> waypoints)
 
 void Map::RunAStarAmbush(int i)
 {
+	//graphInitialized = true;
 	enemies.at(i)->RunAStarAmbush(i, agents, pCurrent, player->getPosition());
 }
 
-void Map::RemoveNodesInObstacles()
+void Map::Collisions()
 {
+	//graph->removeNode(3);
 	for (int i = 0; i < map.size(); i++)
 	{
 		//SDL_IntersectRect(player->getPlayerRect(), map.at(i).)
+		for (int y = 0; y < enemies.size(); y++)
+		{
+			SDL_Rect result;
+			SDL_bool collision = SDL_IntersectRect(&map.at(i)->getObstacleRect(), &enemies.at(y)->getRect(), &result);
+			if (collision == true)
+			{
+				if ((enemies.at(y)->getPosition().x + enemies.at(y)->getRect().w) > map.at(i)->getObstaclePosition().x
+					&& (enemies.at(y)->getPosition().x + enemies.at(y)->getRect().w) < (map.at(i)->getObstaclePosition().x + map.at(i)->getObstacleRect().w))
+				{
+					enemies.at(y)->Collision(SDL_Point{ -20, 0 });
+				}
+
+
+
+				/*if (map.at(i)->getObstacleRect().x > )*/
+			//	graph->nodeArray()[y]->SetActive(false);
+				/*graph->removeNode(y);*/
+			}
+			/*}*/
+		}
 	}
 }
+
 
 void Map::Update()
 {
@@ -204,10 +233,17 @@ void Map::Update()
 	{
 		enemies.at(i)->Move();
 	}
+
+	Collisions();
+	//if (graphInitialized == true)
+	//{
+	//	/*RemoveNodesInObstacles();*/
+	//	//graphInitialized = false;
+	//}
+
 }
 
-
-
+// Initialize agents for A*mbush
 void Map::InitializeAgents(int num)
 {
 	for (int i = 0; i < num; i++)
@@ -219,8 +255,6 @@ void Map::InitializeAgents(int num)
 	}
 
 	std::cout << "Number of agents initialized: " << agents.size() << std::endl;
-
-	graphInitialized = true;
 }
 
 

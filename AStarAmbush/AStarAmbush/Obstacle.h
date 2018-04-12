@@ -17,7 +17,8 @@ public:
 	~Obstacle();
 
 	void Draw(SDL_Renderer * renderer);
-
+	SDL_Rect getObstacleRect();
+	SDL_Point getObstaclePosition();
 
 private:
 	SDL_Rect rect;

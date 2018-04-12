@@ -1,112 +1,29 @@
-﻿  Player.cpp
-  Map.cpp
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(24): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(28): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(32): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(164): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(177): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\map.cpp(203): warning C4018: '<': signed/unsigned mismatch
+﻿  Game.cpp
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\game.cpp(42): warning C4018: '>': signed/unsigned mismatch
   Main.cpp
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
-  Game.cpp
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\game.cpp(114): warning C4018: '>': signed/unsigned mismatch
-  InputHandler.cpp
-  Obstacle.cpp
-  NodeObject.cpp
-  Enemy.cpp
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(95): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(120): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(123): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(129): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(569): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(563): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
-          with
-          [
-              _Ty=theAgent *
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(88): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
-          with
-          [
-              _Ty=theAgent *
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(88): note: see reference to class template instantiation 'Graph<std::pair<std::string,int>,int>' being compiled
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(542): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(532): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)'
-          with
-          [
-              _Ty=GraphNode<std::pair<std::string,int>,int> *,
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(577): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbushInitialize(GraphNode<std::pair<std::string,int>,int> *,std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>> *)' being compiled
-          with
-          [
-              _Ty=GraphNode<std::pair<std::string,int>,int> *,
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(563): note: while compiling class template member function 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)'
-          with
-          [
-              _Ty=theAgent *
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\enemy.cpp(88): note: see reference to function template instantiation 'void Graph<std::pair<std::string,int>,int>::aStarAmbush(GraphNode<std::pair<std::string,int>,int> *,GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>> &,Agent<std::pair<std::string,int>,int> *)' being compiled
-          with
-          [
-              _Ty=theAgent *
-          ]
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(675): warning C4018: '<': signed/unsigned mismatch
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(658): note: while compiling class template member function 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)'
-          with
-          [
-              _Ty=theAgent *
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(595): note: see reference to function template instantiation 'int Graph<std::pair<std::string,int>,int>::calculateDegree(GraphNode<std::pair<std::string,int>,int> *,std::vector<theAgent *,std::allocator<_Ty>>,Agent<std::pair<std::string,int>,int> *)' being compiled
-          with
-          [
-              _Ty=theAgent *
-          ]
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(677): warning C4018: '<': signed/unsigned mismatch
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(37): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(36): note: while compiling class template member function 'bool NodeSearchCostComparer2<NodeType,ArcType>::operator ()(GraphNode<NodeType,ArcType> *,GraphNode<NodeType,ArcType> *)'
-          with
-          [
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.12.25827\include\xutility(1019): note: see reference to function template instantiation 'bool NodeSearchCostComparer2<NodeType,ArcType>::operator ()(GraphNode<NodeType,ArcType> *,GraphNode<NodeType,ArcType> *)' being compiled
-          with
-          [
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.12.25827\include\queue(376): note: see reference to class template instantiation 'NodeSearchCostComparer2<NodeType,ArcType>' being compiled
-          with
-          [
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-  c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(575): note: see reference to class template instantiation 'std::priority_queue<GraphNode<std::pair<std::string,int>,int> *,std::vector<GraphNode<std::pair<std::string,int>,int> *,std::allocator<_Ty>>,NodeSearchCostComparer2<NodeType,ArcType>>' being compiled
-          with
-          [
-              _Ty=GraphNode<std::pair<std::string,int>,int> *,
-              NodeType=std::pair<std::string,int>,
-              ArcType=int
-          ]
-c:\users\gameuser\desktop\2018\gamesengineering\astarambush\12 04 2018 current\clone\gamesengineering2\astarambush\astarambush\graph.h(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
+  Map.cpp
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(8): warning C4005: 'window_width': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(8): note: see previous definition of 'window_width'
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\player.h(9): warning C4005: 'window_height': macro redefinition
+  d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\obstacle.h(9): note: see previous definition of 'window_height'
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(24): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(28): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(32): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(170): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(185): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(188): warning C4018: '<': signed/unsigned mismatch
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(192): warning C4805: '==': unsafe mix of type 'SDL_bool' and type 'bool' in operation
+d:\astarambushproject\last\gfghgh,j\clone3\gamesengineering2\astarambush\astarambush\map.cpp(232): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-  AStarAmbush.vcxproj -> C:\Users\gameuser\Desktop\2018\GamesEngineering\AStarAmbush\12 04 2018 current\Clone\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.exe
+  AStarAmbush.vcxproj -> D:\AStarAmbushProject\Last\GFGHGH,J\Clone3\GamesEngineering2\AStarAmbush\Debug\AStarAmbush.exe

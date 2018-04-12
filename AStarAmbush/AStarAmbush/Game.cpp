@@ -16,6 +16,45 @@ Map *myMap;
 bool initialized = false;
 
 
+
+// Critical Section
+// Used for running A*mbush
+int AStarAmbush(void * data)
+{
+	//Pre thread random seeding
+	srand(SDL_GetTicks());
+	if (initialized == false)
+	{
+		SDL_Delay(1000);
+		initialized = true;
+	}
+	// Starting our pathfinding thread.
+	// seeding of random value is done for every thread
+	while (true)
+	{
+		//Wait 
+		SDL_Delay(10);
+
+		//Lock
+		SDL_SemWait(pathLock);
+
+		pathData++;
+		if (pathData > myMap->enemies.size())
+		{
+			pathData = 0;
+		}
+
+		myMap->RunAStarAmbush(pathData);
+
+		// Unlock
+		SDL_SemPost(pathLock);
+
+		//Wait 
+		SDL_Delay(10);
+	}
+	return 0;
+}
+
 void Game::Initialize()
 {
 	isRunning = true; // used for while loop in main
@@ -36,6 +75,8 @@ void Game::Initialize()
 	SDL_Thread* threadA = SDL_CreateThread(AStarAmbush, "Thread A", (void*)"Thread A");
 	SDL_Delay(16 + rand() % 32);
 	SDL_Thread* threadB = SDL_CreateThread(AStarAmbush, "Thread B", (void*)"Thread B");
+	SDL_Delay(16 + rand() % 32);
+	SDL_Thread* threadC = SDL_CreateThread(AStarAmbush, "Thread C", (void*)"Thread C");
 	
 	/*graph = new Graph< pair<string, int>, int >(864);*/
 
@@ -54,17 +95,14 @@ void Game::Initialize()
 void Game::RunAStarAmbush(int i)
 {
 	myMap->RunAStarAmbush(i);
-	//graph->aStarAmbush(graph->nodeArray()[start], graph->nodeArray()[goal], agents, agents.at(agent));
 }
 
 void Game::Update()
 {
-
 	FramerateHandler();
 	input->HandleInput();
 	myMap->Update();
 	SDL_RenderPresent(renderer);
-	
 }
 
 void Game::FramerateHandler()
@@ -81,51 +119,14 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 
+	// Draws everything on Map
 	myMap->Draw(renderer);
 }
 
 void Game::WaitForThreads()
 {
-}
-
-
-
-
-int AStarAmbush(void * data)
-{
-	//Pre thread random seeding
-	srand(SDL_GetTicks());
-	if (initialized == false)
-	{
-		SDL_Delay(3000);
-		initialized = true;
-	}
-	// Starting our pathfinding thread.
-	// seeding of random value is done per thread, 
-	while(true)
-	{ 
-		//Wait 
-		SDL_Delay(1);
-
-		//Lock
-		SDL_SemWait(pathLock);
-
-		pathData++;
-		if (pathData > myMap->enemies.size())
-		{
-			pathData = 0;
-		}
-
-
-		myMap->RunAStarAmbush(pathData);
-
-		// Unlock
-		SDL_SemPost(pathLock);
-
-		//Wait 
-		SDL_Delay(1);
-		
-	}
-	return 0;
+	/*SDL_WaitThread(threadA, NULL);
+	SDL_WaitThread(threadB, NULL);
+	SDL_WaitThread(threadC, NULL);*/
 }
 

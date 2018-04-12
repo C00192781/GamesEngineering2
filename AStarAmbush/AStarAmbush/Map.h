@@ -61,7 +61,7 @@ public:
 	void SetWaypoints(std::vector<SDL_Point> waypoints);
 	void RunAStarAmbush(int i);
 
-	void RemoveNodesInObstacles();
+	void Collisions();
 
 	bool isGraphInitialized() {
 		return graphInitialized;

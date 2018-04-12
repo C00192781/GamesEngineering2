@@ -44,6 +44,8 @@ private:
 
 	SDL_Point m_waypoint;
 
+	bool m_active = true;
+
 
 public:
 	// Constructor function
@@ -111,6 +113,16 @@ public:
 	void setWaypoint(SDL_Point waypoint)
 	{
 		m_waypoint = waypoint;
+	}
+
+	void SetActive(bool active) 
+	{ 
+		m_active = active; 
+	}
+
+	bool getActive()
+	{
+		return m_active;
 	}
 
 

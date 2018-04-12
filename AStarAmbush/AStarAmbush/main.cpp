@@ -10,6 +10,13 @@
 #include "Game.h"
 #include <iostream>
 
+// Written By: Kevin Boylan
+// WSAD - Controls Player
+// Implementation of A*ambush (uses agents and calculates degree) included
+// Threading for Critical Section - Running A*mbush
+// Enemies target player position
+// No Collision Detection
+
 int main()
 {
 	Game* game = new Game();

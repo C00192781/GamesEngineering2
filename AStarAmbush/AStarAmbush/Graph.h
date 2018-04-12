@@ -177,7 +177,7 @@ void Graph<NodeType, ArcType>::removeNode( int index ) {
      if(m_pNodes[index] != 0) {
          // now find every arc that points to the node that
          // is being removed and remove it.        
-         Arc* arc;
+         Arc* arc = nullptr;
 
          // loop through every node
          for( int node = 0; node < m_maxNodes; node++ ) {
@@ -244,7 +244,7 @@ void Graph<NodeType, ArcType>::removeArc( int from, int to ) {
      // Make sure that the node exists before trying to remove
      // an arc from it.
      bool nodeExists = true;
-     if( m_pNodes[from] == 0 || m_pNodes[O] == 0 ) 
+     if( m_pNodes[from] == 0 || m_pNodes[to] == 0 ) 
 	 {
          nodeExists = false;
      }
@@ -401,48 +401,55 @@ void Graph<NodeType, ArcType>::ucs(Node* pStart, Node* pDest, std::vector<Node *
 	// while the node queue size is not 0 and we haven't reached our Goal Node yet
 	while (nodeQueue.size() != 0 && nodeQueue.top() != pDest)
 	{
-		//set up iterators
-		list<Arc>::const_iterator iter = nodeQueue.top()->arcList().begin();
-		list<Arc>::const_iterator endIter = nodeQueue.top()->arcList().end();
 
-		// for each iteration though the nodes
-		for (; iter != endIter; iter++)
+		/*if (nodeQueue.top()->getActive() == false)
 		{
-			// if the current node is not the highest priority node - THEN WE KNOW TO START ADDING UP DISTANCE
-			if ((*iter).node() != nodeQueue.top())
+			nodeQueue.pop();
+		}*/
+
+			//set up iterators
+			list<Arc>::const_iterator iter = nodeQueue.top()->arcList().begin();
+			list<Arc>::const_iterator endIter = nodeQueue.top()->arcList().end();
+
+			// for each iteration though the nodes
+			for (; iter != endIter; iter++)
 			{
-				// EACH TIME WE ITERATE THROUGH THE NODES WE ADD THE DISTANCE
-				// distance = the distance of the current node + the distance added up so far 
-				int distance = nodeQueue.top()->data().second + iter->weight();
-
-
-				/////// FOR FINDING SHORTEST PATH
-				// if the distance is less than the weight of the current node, i.e. we've found a shorter path
-				if (distance < (*iter).node()->data().second)
+				// if the current node is not the highest priority node - THEN WE KNOW TO START ADDING UP DISTANCE
+				if ((*iter).node() != nodeQueue.top())
 				{
-					// set the current node's values - same name, the shorter/new distance
-					(*iter).node()->setData(pair<string, int>((*iter).node()->data().first, distance));
-					// set the previous node as being the node with the shortest path
-					(*iter).node()->setPrevious((nodeQueue.top()));
-				}
+					// EACH TIME WE ITERATE THROUGH THE NODES WE ADD THE DISTANCE
+					// distance = the distance of the current node + the distance added up so far 
+					int distance = nodeQueue.top()->data().second + iter->weight();
 
 
-				///////// FOR MARKING
-				// if the node has not been marked
-				if ((*iter).node()->marked() == false)
-				{
-					//(*iter).node()->setPrevious((nodeQueue.top()));
-					// mark it as being true
-					(*iter).node()->setMarked(true);
-					// push the current node to the queue
-					nodeQueue.push((*iter).node());
+					/////// FOR FINDING SHORTEST PATH
+					// if the distance is less than the weight of the current node, i.e. we've found a shorter path
+					if (distance < (*iter).node()->data().second)
+					{
+						// set the current node's values - same name, the shorter/new distance
+						(*iter).node()->setData(pair<string, int>((*iter).node()->data().first, distance));
+						// set the previous node as being the node with the shortest path
+						(*iter).node()->setPrevious((nodeQueue.top()));
+					}
+
+
+					///////// FOR MARKING
+					// if the node has not been marked
+					if ((*iter).node()->marked() == false)
+					{
+						//(*iter).node()->setPrevious((nodeQueue.top()));
+						// mark it as being true
+						(*iter).node()->setMarked(true);
+						// push the current node to the queue
+						nodeQueue.push((*iter).node());
+					}
 				}
 			}
+			//////// REMOVE NODE
+			// remove the node from the front of the queue
+			nodeQueue.pop();
 		}
-		//////// REMOVE NODE
-		// remove the node from the front of the queue
-		nodeQueue.pop();
-	}
+	
 }
 
 
@@ -486,6 +493,7 @@ void Graph<NodeType, ArcType>::aStar(Node* pStart, Node* pDest, std::vector<Node
 	// while the node queue size is not 0 and we haven't reached our Goal Node yet
 	while (nodeQueue.size() != 0 && nodeQueue.top() != pDest)
 	{
+
 		//set up iterators
 		list<Arc>::const_iterator iter = nodeQueue.top()->arcList().begin();
 		list<Arc>::const_iterator endIter = nodeQueue.top()->arcList().end();
@@ -576,10 +584,15 @@ void Graph<NodeType, ArcType>::aStarAmbush(Node* pStart, Node* pDest, std::vecto
 
 	aStarAmbushInitialize(pStart, &nodeQueue);
 
-
 	// while the node queue size is not 0 and we haven't reached our Goal Node yet
 	while (nodeQueue.size() != 0 && nodeQueue.top() != pDest)
 	{
+		/*if (nodeQueue.top()->getActive() == false)
+		{
+			nodeQueue.pop();
+		}*/
+
+
 		//set up iterators
 		list<Arc>::const_iterator iter = nodeQueue.top()->arcList().begin();
 		list<Arc>::const_iterator endIter = nodeQueue.top()->arcList().end();

@@ -24,10 +24,6 @@
 #define window_width 1000
 #define window_height 1000
 
-//typedef GraphArc<std::string, int> Arc;
-//typedef GraphNode<pair<std::string, int>, int> Node;
-//typedef Agent<pair<std::string, int>, int> theAgent;
-
 // Pathfinding thread function
 int AStarAmbush(void* data);
 
@@ -45,22 +41,10 @@ public:
 	EventListener *listener;
 	InputHandler *input;
 
-	
-
-	/*Graph< pair<string, int>, int > *graph;
-	std::vector<theAgent *> agents;
-	Node *pCurrent;*/
-
-	/*int numOfAgents;
-	int start;
-	int goal;*/
-
 	//set up a path
 	std::vector<Node* > path;
 
 	void Initialize();
-	//void GraphSetUp();
-	/*void InitializeAgents(int num);*/
 	void RunAStarAmbush(int i);
 	void Update();
 	void Render();

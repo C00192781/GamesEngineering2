@@ -15,6 +15,7 @@ public:
 	~NodeObject();
 
 	void Draw(SDL_Renderer * renderer);
+	SDL_Rect getNodeObjectRect();
 
 private:
 	SDL_Rect rect;

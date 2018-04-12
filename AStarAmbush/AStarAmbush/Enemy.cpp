@@ -138,4 +138,20 @@ int Enemy::searchNearestWaypoint(SDL_Point position)
 	return differenceIndex;
 }
 
+SDL_Point Enemy::getPosition()
+{
+	return SDL_Point{ xPos, yPos };
+}
+
+SDL_Rect Enemy::getRect()
+{
+	return rect;
+}
+
+void Enemy::Collision(SDL_Point offset)
+{
+	rect.x += offset.x;
+	rect.y += offset.y;
+}
+
 

@@ -36,6 +36,9 @@ public:
 	void RunAStarAmbush(int agent, std::vector<theAgent*> agents, Node *pCurrent, SDL_Point playerPos);
 	int searchNearestWaypoint(SDL_Point position);
 
+	SDL_Point getPosition();
+	SDL_Rect getRect();
+	void Collision(SDL_Point offset);
 
 
 

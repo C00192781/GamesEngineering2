@@ -11,19 +11,26 @@
 #include "Graph.h"
 //#include "SFML\Graphics.hpp"
 
-#include "Agent.h"
+//#include "Agent.h"
 #include "EventListener.h"
 #include "InputHandler.h"
 #include "Map.h"
 #include "Obstacle.h"
 
-#define fps 60
-#define window_width 1080
-#define window_height 720
+#include "SDL_thread.h"
 
-typedef GraphArc<std::string, int> Arc;
-typedef GraphNode<pair<std::string, int>, int> Node;
-typedef Agent<pair<std::string, int>, int> theAgent;
+
+#define fps 60
+#define window_width 1000
+#define window_height 1000
+
+//typedef GraphArc<std::string, int> Arc;
+//typedef GraphNode<pair<std::string, int>, int> Node;
+//typedef Agent<pair<std::string, int>, int> theAgent;
+
+// Pathfinding thread function
+int AStarAmbush(void* data);
+
 
 class Game {
 private:
@@ -38,30 +45,34 @@ public:
 	EventListener *listener;
 	InputHandler *input;
 
-	Map *map;
+	
 
-	Graph< pair<string, int>, int > *graph;
+	/*Graph< pair<string, int>, int > *graph;
 	std::vector<theAgent *> agents;
-	Node *pCurrent;
+	Node *pCurrent;*/
 
-	int numOfAgents;
+	/*int numOfAgents;
 	int start;
-	int goal;
+	int goal;*/
 
 	//set up a path
 	std::vector<Node* > path;
 
 	void Initialize();
-	void GraphSetUp();
-	void InitializeAgents(int num);
-	void RunAStarAmbush(int start, int goal, int agent);
-	void Load();
+	//void GraphSetUp();
+	/*void InitializeAgents(int num);*/
+	void RunAStarAmbush(int i);
 	void Update();
 	void Render();
+
+	void WaitForThreads();
 
 	bool IsRunning()
 	{
 		return isRunning;
 	};
+
+
+	int timer = 0;
 
 };

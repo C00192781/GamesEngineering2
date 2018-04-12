@@ -28,3 +28,13 @@ void Player::Move(int x, int y)
 	rect.x += x;
 	rect.y += y;
 }
+
+SDL_Point Player::getPosition()
+{
+	return SDL_Point{ rect.x, rect.y };
+}
+
+SDL_Rect Player::getPlayerRect()
+{
+	return rect;
+}

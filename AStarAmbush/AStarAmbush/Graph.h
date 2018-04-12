@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <list>
+#include <iostream>
 #include <queue>
 
 using namespace std;
@@ -591,8 +592,10 @@ void Graph<NodeType, ArcType>::aStarAmbush(Node* pStart, Node* pDest, std::vecto
 			{
 				//int distance = nodeQueue.top()->data().second + iter->weight();
 				// ***************************
-				int distance = nodeQueue.top()->data().second + iter->weight() * calculateDegree((*iter).node(), agents, agent) * calculateDegree((*iter).node(), agents, agent);
-				
+				int counter = calculateDegree((*iter).node(), agents, agent);
+				int distance = nodeQueue.top()->data().second + iter->weight() * counter * counter;
+				//int distance = nodeQueue.top()->data().second + iter->weight();
+
 				
 				
 				///// FOR FINDING SHORTEST PATH

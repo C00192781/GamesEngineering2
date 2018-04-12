@@ -15,7 +15,6 @@ int main()
 	Game* game = new Game();
 
 	game->Initialize();
-	game->Load();
 
 	while (game->IsRunning())
 	{
@@ -23,6 +22,7 @@ int main()
 		game->Render();
 	}
 
+	game->WaitForThreads();
 	SDL_Quit();
 
 

@@ -4,6 +4,18 @@
 using namespace std;
 using std::pair;
 
+
+//Data access semaphore
+SDL_sem* pathLock = NULL;
+
+//The "data buffer"
+int pathData = -1;
+
+Map *myMap;
+
+bool initialized = false;
+
+
 void Game::Initialize()
 {
 	isRunning = true; // used for while loop in main
@@ -15,97 +27,44 @@ void Game::Initialize()
 	listener = new EventListener();
 	input = new InputHandler(listener, e);
 
-	//Graph< pair<string, int>, int > graph(16);
+	//Initialize semaphore
+	pathLock = SDL_CreateSemaphore(1);
 
-	numOfAgents = 3;
-	start = 0;
-	goal = 863;
-
+	//Run the threads
+	srand(SDL_GetTicks());
+	SDL_Delay(3000);
+	SDL_Thread* threadA = SDL_CreateThread(AStarAmbush, "Thread A", (void*)"Thread A");
+	SDL_Delay(16 + rand() % 32);
+	SDL_Thread* threadB = SDL_CreateThread(AStarAmbush, "Thread B", (void*)"Thread B");
 	
+	/*graph = new Graph< pair<string, int>, int >(864);*/
+
+	myMap = new Map(listener);
+	myMap->InitializeMap();
+	myMap->SetNodeRepresentation(100, 100);
+	myMap->SetNodes(100, 100);
+	myMap->SetArcs(100, 100);
 	
-	graph = new Graph< pair<string, int>, int >(864);
-	GraphSetUp();
-	InitializeAgents(numOfAgents);
-
-	map = new Map(listener);
-	map->InitializeMap();
-	map->SetNodeRepresentation(36, 24);
-	map->SetNodes(36, 24, graph);
-	map->SetArcs(36, 24, graph);
-
-	//std::cout << "Search is temporarily commented out until new arcs are added in." << std::endl;
-
-	
-
-	RunAStarAmbush(start, goal, 0);
-	pCurrent = graph->nodeArray()[goal];
-	graph->displayPath(pCurrent, start);
-
-	//RunAStarAmbush(start, goal, 1);
-	//pCurrent = graph->nodeArray()[goal];
-	//graph->displayPath(pCurrent, start);
-
-	//RunAStarAmbush(start, goal, 2);
-	//pCurrent = graph->nodeArray()[goal];
-	//graph->displayPath(pCurrent, start);
-
-	
+	SDL_Colour enemyColour = SDL_Colour{ 102, 255, 255, 255 };
+	myMap->SpawnEnemies(49, SDL_Point{ 100, 100 }, 20, 20, enemyColour);
 
 }
 
-void Game::GraphSetUp()
+
+void Game::RunAStarAmbush(int i)
 {
-////	Graph< pair<string, int>, int > graph(16);
-//	std::string nodeLabel;
-//	int i = 0;
-//	ifstream myfile;
-//	myfile.open("nodes.txt");
-//	while (myfile >> nodeLabel) 
-//	{
-//		// giving each node a string and an integer we'll change later
-//
-//		graph->addNode(pair<string, int>(nodeLabel, 0), i);
-//		i++;
-//	}
-//	myfile.close();
-//
-//	myfile.open("arcs.txt");
-//	int from, to, weight;
-//	while (myfile >> from >> to >> weight) 
-//	{
-//		graph->addArc(from, to, weight);
-//	}
-//	myfile.close();
-}
-
-void Game::InitializeAgents(int num)
-{
-	for (int i = 0; i < num; i++)
-	{
-		theAgent *agent = new theAgent();
-		agent->m_currentAgent = i;
-		agents.push_back(agent);
-	}
-
-	std::cout << "Number of agents initialized: " << agents.size() << std::endl;
-}
-
-void Game::RunAStarAmbush(int start, int goal, int agent)
-{
-	graph->aStarAmbush(graph->nodeArray()[start], graph->nodeArray()[goal], agents, agents.at(agent));
-}
-
-void Game::Load()
-{
-
+	myMap->RunAStarAmbush(i);
+	//graph->aStarAmbush(graph->nodeArray()[start], graph->nodeArray()[goal], agents, agents.at(agent));
 }
 
 void Game::Update()
 {
+
 	FramerateHandler();
 	input->HandleInput();
-	map->Update();
+	myMap->Update();
 	SDL_RenderPresent(renderer);
+	
 }
 
 void Game::FramerateHandler()
@@ -122,9 +81,51 @@ void Game::Render()
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
 
-	map->Draw(renderer);
-
-	//obstacle->Draw(renderer);
+	myMap->Draw(renderer);
 }
 
+void Game::WaitForThreads()
+{
+}
+
+
+
+
+int AStarAmbush(void * data)
+{
+	//Pre thread random seeding
+	srand(SDL_GetTicks());
+	if (initialized == false)
+	{
+		SDL_Delay(3000);
+		initialized = true;
+	}
+	// Starting our pathfinding thread.
+	// seeding of random value is done per thread, 
+	while(true)
+	{ 
+		//Wait 
+		SDL_Delay(1);
+
+		//Lock
+		SDL_SemWait(pathLock);
+
+		pathData++;
+		if (pathData > myMap->enemies.size())
+		{
+			pathData = 0;
+		}
+
+
+		myMap->RunAStarAmbush(pathData);
+
+		// Unlock
+		SDL_SemPost(pathLock);
+
+		//Wait 
+		SDL_Delay(1);
+		
+	}
+	return 0;
+}
 

@@ -5,8 +5,8 @@
 
 
 #include "SDL.h"
-#define window_width 1080
-#define window_height 720
+#define window_width 1000
+#define window_height 1000
 
 #define StandardWidthAndHeight 50
 
@@ -19,6 +19,8 @@ public:
 	void Draw(SDL_Renderer * renderer);
 	void Move(int x, int y);
 
+	SDL_Point getPosition(); 
+	SDL_Rect getPlayerRect();
 
 private:
 	SDL_Rect rect;

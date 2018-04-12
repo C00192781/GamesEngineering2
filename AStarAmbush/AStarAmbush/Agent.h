@@ -20,6 +20,8 @@ public:
 	Agent(int currentAgent);
 	int m_currentAgent;
 	std::vector<Node*> starPath;
+
+	
 };
 
 template<class NodeType, class ArcType>

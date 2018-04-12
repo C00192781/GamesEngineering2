@@ -3,6 +3,14 @@
 Map::Map(EventListener *eventListener)
 {
 	m_eventListener = eventListener;
+	graph = new Graph< pair<string, int>, int >(10000);
+
+	numOfAgents = 50;
+	start = 1000;
+	goal = 8000;
+
+	graphInitialized = false;
+
 }
 
 Map::~Map()
@@ -20,6 +28,10 @@ void Map::Draw(SDL_Renderer * renderer)
 	for (int i = 0; i < map.size(); i++)
 	{
 		map.at(i)->Draw(renderer);
+	}
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		enemies.at(i)->Draw(renderer);
 	}
 	player->Draw(renderer);
 	/*for (int i = 0; i < map.size(); i++)
@@ -40,6 +52,7 @@ void Map::InitializeMap()
 	player = new Player(300, 400, 50, 50, white);
 	SpawnOuterWalls();
 	SpawnObstacles();
+	InitializeAgents(numOfAgents);
 }
 
 void Map::SpawnOuterWalls()
@@ -74,29 +87,30 @@ void Map::SetNodeRepresentation(int rowWidth, int columnHeight)
 		for (int y = 0; y < columnHeight; y++)
 		{
 			SDL_Colour green = SDL_Colour{ 25, 179, 0, 0 };
-			NodeObject *nodeObject = new NodeObject(i * 30, y * 30, 5, 5, green);
+			NodeObject *nodeObject = new NodeObject(i * 10, y * 10, 5, 5, green);
 			nodeObjects.push_back(nodeObject);
 		}
 	}
 }
 
-void Map::SetNodes(int rowWidth, int columnHeight, Graph< pair<string, int>, int > *graph)
+void Map::SetNodes(int rowWidth, int columnHeight)
 {
 	int count = 0;
 	for (int i = 0; i < rowWidth; i++)
 	{
 		for (int y = 0; y < columnHeight; y++)
 		{
-			SDL_Point position = SDL_Point{ i * 30, y * 30 };
+			SDL_Point position = SDL_Point{ i * 10, y * 10 };
 			graph->addNode(pair<string, int>(std::to_string(count), 0), count, position);
+			allWaypoints.push_back(position);
 			count++;
 		}
 	}
 }
 
-void Map::SetArcs(int rowWidth, int columnHeight, Graph<pair<string, int>, int>* graph)
+void Map::SetArcs(int rowWidth, int columnHeight)
 {
-	int standardWeight = 30;
+	int standardWeight = 10;
 
 	//std::cout << graph->getSize();
 	int size = graph->getSize();
@@ -107,14 +121,10 @@ void Map::SetArcs(int rowWidth, int columnHeight, Graph<pair<string, int>, int>*
 	for (int i = 0; i < size; i++)
 	{
 		SDL_Point waypoint = SDL_Point{ graph->nodeArray()[i]->getWaypoint().x, graph->nodeArray()[i]->getWaypoint().y };
-		x = waypoint.x / 30 + 1; // column 
-		y = waypoint.y / 30 + 1; // row
-
-		//std::cout << waypoint.x << " " << waypoint.y << std::endl;
+		x = waypoint.x / 10 + 1; // column 
+		y = waypoint.y / 10 + 1; // row
 
 		int check = x * columnHeight - 1;
-		//int check2 = (x - 1) * columnHeight - 1;
-		//int check3 = (x + 1) * columnHeight - 1;
 
 		// up
 		if (i - 1 > check - columnHeight)
@@ -127,23 +137,15 @@ void Map::SetArcs(int rowWidth, int columnHeight, Graph<pair<string, int>, int>*
 			graph->addArc(i, i + 1, standardWeight);
 		}
 		// left
-		if ((i - 24 > check - (columnHeight* 2)) && ((check - columnHeight) >=0))
+		if ((i - columnHeight > check - (columnHeight* 2)) && ((check - columnHeight) >=0))
 		{
 			graph->addArc(i, i - columnHeight, standardWeight);
 		}
 		// right
-		if ((i + 24 < check + columnHeight + 1) && ((check + columnHeight) <= (size + 1))  )
+		if ((i + columnHeight < check + columnHeight + 1) && ((check + columnHeight) <= (size + 1))  )
 		{
 			graph->addArc(i, i + columnHeight, standardWeight);
 		}
-
-		//std::cout << (check - columnHeight) << std::endl;
-
-		//std::cout << "x: " << x << std::endl;
-		//std::cout << "y: " << y << std::endl;
-		//std::cout << "Index: " << graph->nodeArray()[i]->data().first << std::endl;
-
-		//std::cout << "Size: " << graph->nodeArray()[i]->arcList().size() << std::endl;
 	}
 }
 
@@ -151,10 +153,31 @@ void Map::SpawnEnemies(int num, SDL_Point start, int width, int height, SDL_Colo
 {
 	for (int i = 0; i < num; i++)
 	{
-		Enemy *enemy = new Enemy(start.x, start.y, width, height, colour, i);
+		Enemy *enemy = new Enemy(start.x, start.y, width, height, colour, i, graph, pCurrent, allWaypoints);
 		enemies.push_back(enemy);
 	}
 	
+}
+
+void Map::SetWaypoints(std::vector<SDL_Point> waypoints)
+{
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		//enemies.at(i)->SetWaypoints(waypoints.at(i));
+	}
+}
+
+void Map::RunAStarAmbush(int i)
+{
+	enemies.at(i)->RunAStarAmbush(i, agents, pCurrent, player->getPosition());
+}
+
+void Map::RemoveNodesInObstacles()
+{
+	for (int i = 0; i < map.size(); i++)
+	{
+		//SDL_IntersectRect(player->getPlayerRect(), map.at(i).)
+	}
 }
 
 void Map::Update()
@@ -176,6 +199,28 @@ void Map::Update()
 	{
 		player->Move(speed, 0);
 	}
+
+	for (int i = 0; i < enemies.size(); i++)
+	{
+		enemies.at(i)->Move();
+	}
+}
+
+
+
+void Map::InitializeAgents(int num)
+{
+	for (int i = 0; i < num; i++)
+	{
+		theAgent *agent = new theAgent();
+		agent->m_currentAgent = i;
+		agents.push_back(agent);
+
+	}
+
+	std::cout << "Number of agents initialized: " << agents.size() << std::endl;
+
+	graphInitialized = true;
 }
 
 
